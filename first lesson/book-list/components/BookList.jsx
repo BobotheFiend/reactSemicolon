@@ -7,6 +7,8 @@ const BookList = ()=> {
 
     const [books, setBooks] = useState([]);
     const [newBooks, setNewBooks] = useState("");
+    const [search, setSearch] = useState("");
+    console.log(search)
 
     useEffect(()=> {
         const fetchBooks = async () =>{
@@ -30,9 +32,31 @@ const BookList = ()=> {
     // console.log(newBooks)
     
     function addBook_function(event){
-        event.predefault
+        event.preventDefault();
+
+        if(!newBooks.trim()){ alert("Input a name for you to add a book!!");
+            return;}
+        setBooks((previous)=>[...previous, {id: books.length + 1, title: newBooks}]);
+        setNewBooks("");
     }
 
+
+    function search_function(event){
+        event.preventDefault();
+
+    }
+
+    const displayFoundBook = ()=>{
+        let filteredBook = []
+        books.forEach((book) =>{
+            let bookToLower = book.title.toLowerCase();
+            if(bookToLower.includes(search))
+                filteredBook.push(
+                    <div key={book.id}>{book.title}</div>
+            );
+        })
+        return filteredBook;
+    }
 
     return(
 
@@ -41,8 +65,8 @@ const BookList = ()=> {
 	    	<div className={styles.pageBanner}>
 	    		<h1 className={styles.title}> Book Collections</h1>
           <p>Books</p>
-          <form className={styles.searchBooks}>
-            <input type="text" placeholder="Search books..." />
+          <form onSubmit={search_function} className={styles.searchBooks}>
+            <input type="text" onChange={(event)=> setSearch(event.target.value.toLowerCase())} placeholder="Search books..." />
           </form>
 	    	</div>
 	    </header>
@@ -55,15 +79,19 @@ const BookList = ()=> {
                     books.map(({id, title})=>(
 	    		        <li key={id}>
 	    			        <span className={styles.name}>{title}</span>
-	    			        <span onClick={()=> deleteBook_function(id)} className={styles.delete}>delete</span>
+	    			        <span onInput={()=> deleteBook_function(id)} className={styles.delete}>delete</span>
+
 	    		        </li>
                     ))
    
                 }
+
 	    	</ul>
+
+
 	    </div>
 	    <form onSubmit={addBook_function} className={styles.addBook}>
-	    	<input type="text" onChange={(inputs)=> setNewBooks(inputs.target.value)} placeholder="Add a book..." />
+	    	<input type="text" value={newBooks} onChange={(inputs)=> setNewBooks(inputs.target.value)} placeholder="Add a book..." />
 	    	<button type="submit">Add</button>
 	    </form>
 

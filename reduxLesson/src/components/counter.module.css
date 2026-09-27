@@ -1,0 +1,39 @@
+
+.box{
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px auto;
+    align-items: center;
+    /* background-color: salmon; */
+}
+
+.display{
+     border: 10px solid white;
+     width: 500px;
+     height: auto;
+     font-size: 250px;
+     background-color: black;
+     text-align: center;
+}
+
+.buttons{
+    width: 500px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    
+}
+
+.buttons button{
+    border: 10px solid white;
+    height: auto;
+    width:26%;
+    color: white;
+    background-color: black;
+    font-size: 30px;
+}
+
+
