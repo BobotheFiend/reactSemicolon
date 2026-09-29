@@ -5,6 +5,8 @@ import Brands from "./brands/Brands"
 import Products from "./clothes/Products"
 import BrowseDressStyle from "./browseDressStyle/BrowseDressStyle"
 import Testimonial from "./testimonial/Testimonial"
+import NewsletterCard from "./footer/NewsLetter"
+import Footer from "./footer/BaseFooter"
 
 const HomePage = () => {
   return (
@@ -16,6 +18,8 @@ const HomePage = () => {
         <Products/>
         <BrowseDressStyle/>
         <Testimonial/>
+        <NewsletterCard/>
+        <Footer/>
     </>
   )
 }

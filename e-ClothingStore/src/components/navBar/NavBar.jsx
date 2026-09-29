@@ -6,7 +6,7 @@ import dropdown from '/icons/drop-down-icon.svg'
 
 const NavBar = () => {
   return (
-    <div className='relative flex m-10 p-3 items-center justify-between bg-red-200'>
+    <div className='relative flex m-10 p-3 items-center justify-between'>
         <img src={logo} alt="SHOP.CO LOGO" />
         
         <ul className='flex items-center gap-6'>
