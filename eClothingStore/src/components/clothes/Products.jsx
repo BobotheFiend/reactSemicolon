@@ -5,8 +5,10 @@ const Products = () => {
     const { data, error, isLoading } = useGetAllProductsQuery();
     const [showAll, setShowAll] = useState(false);
 
+    console.log(data);
     const getProductsArray = (apiResponse) => {
         if (!apiResponse) return [];
+        if (Array.isArray(apiResponse)) return apiResponse;
         if (Array.isArray(apiResponse.products)) return apiResponse.products;
         return [];
     };
@@ -61,13 +63,12 @@ const Products = () => {
         <div className='grid grid-cols-4 gap-4 bg-white-600 p-10'>
             {displayProducts()}
             
-            {productsList.length > 4 && (
-                <button onClick={view}
-                    className='col-span-4 text-black px-12 py-4 rounded-full mt-10 w-55 text-center justify-center border hover:bg-black hover:text-white transition-all duration-300 mx-auto'
-                >
-                    {showAll ? 'VIEW LESS' : 'VIEW MORE'}
-                </button>
-            )}
+            <button onClick={view}
+                className='col-span-4 text-black px-12 py-4 rounded-full mt-10 w-55 text-center justify-center border hover:bg-black hover:text-white transition-all duration-300 mx-auto hover:w-70 hover:font-[500]'
+            >
+                {showAll ? 'VIEW LESS' : 'VIEW MORE'}
+            </button>
+            
         </div>
     );
 };
